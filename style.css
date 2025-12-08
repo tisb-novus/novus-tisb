@@ -1,0 +1,422 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #0a0a0a;
+}
+
+/* Navigation */
+nav {
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-logo {
+    color: #00d4ff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+nav a:hover, nav a.active {
+    color: #00d4ff;
+    background: rgba(0, 212, 255, 0.1);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+    color: white;
+    padding: 8rem 2rem 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.hero .date {
+    font-size: 1.8rem;
+    font-weight: 600;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    color: #00d4ff;
+    letter-spacing: 1px;
+}
+
+/* Content Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+/* Cards */
+.card {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+}
+
+.card h3 {
+    color: #00d4ff;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+}
+
+.card ul {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Challenge Section */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.challenge-card {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #00d4ff;
+    transition: all 0.3s ease;
+}
+
+.challenge-card:hover {
+    border-color: rgba(0, 212, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15);
+}
+
+.challenge-card h3 {
+    color: #00d4ff;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.challenge-card p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.challenge-card ul {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* PDF Viewer */
+.pdf-container {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 2rem 0;
+}
+
+.pdf-embed {
+    width: 100%;
+    height: 800px;
+    border: none;
+    border-radius: 8px;
+    background: #1a1a1a;
+}
+
+.pdf-placeholder {
+    background: rgba(0, 212, 255, 0.05);
+    border: 2px dashed rgba(0, 212, 255, 0.3);
+    border-radius: 12px;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: rgba(0, 212, 255, 0.6);
+}
+
+.pdf-placeholder h3 {
+    color: #00d4ff;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.pdf-placeholder p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.pdf-placeholder code {
+    background: rgba(0, 212, 255, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #00d4ff;
+    font-size: 0.9rem;
+}
+
+/* Schedule */
+.schedule-item {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.8rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.schedule-item:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 4px 24px rgba(0, 212, 255, 0.1);
+}
+
+.time {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
+    color: #00d4ff;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    min-width: 120px;
+    text-align: center;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    font-size: 1.1rem;
+}
+
+.event-details h3 {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.event-details p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Contact */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-card {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+}
+
+.contact-card h3 {
+    color: #00d4ff;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.contact-card p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Reflections */
+.reflection-content {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+}
+
+.reflection-content h3 {
+    color: #00d4ff;
+    font-weight: 600;
+}
+
+.reflection-content p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.image-placeholder {
+    background: rgba(0, 212, 255, 0.05);
+    border: 2px dashed rgba(0, 212, 255, 0.3);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: rgba(0, 212, 255, 0.6);
+    font-style: italic;
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    color: #00d4ff;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: not-allowed;
+    opacity: 0.7;
+    margin-top: 2rem;
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.3) 0%, rgba(0, 212, 255, 0.2) 100%);
+    border-color: rgba(0, 212, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+}
+
+/* Footer */
+footer {
+    background: rgba(10, 10, 10, 0.95);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 2.5rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p:first-child {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .nav-container {
+        gap: 1rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    .schedule-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+}
