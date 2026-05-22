@@ -118,6 +118,34 @@ nav {
 }
 
 nav ul { list-style: none; display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+/* Hamburger toggle — hidden on desktop, shown only on mobile */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background: var(--ink);
+    margin: 0 auto;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
 nav a.nav-link {
     color: var(--ink);
     text-decoration: none;
@@ -486,7 +514,46 @@ footer p { font-size: 0.88rem; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
-    .nav-container { justify-content: center; }
+    .nav-container {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        padding: 0.7rem 1.2rem;
+    }
+    .nav-toggle { display: flex; }
+
+    /* Menu becomes a dropdown panel */
+    nav ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--paper);
+        border-bottom: 2px solid var(--ink);
+        box-shadow: 0 12px 24px rgba(20,35,63,0.12);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    nav ul.open { max-height: 420px; }
+    nav ul li { width: 100%; border-top: 1px solid rgba(20,35,63,0.08); }
+    nav a.nav-link {
+        display: block;
+        width: 100%;
+        padding: 1rem 1.4rem;
+        border-radius: 0;
+        font-size: 1rem;
+        border: none;
+    }
+    nav a.nav-link::after { display: none; }
+    nav a.nav-link.active { background: var(--blue); color: var(--white); }
+    nav { position: sticky; }
+
+    .brand-name { font-size: 1.2rem; }
+    .brand-sub { font-size: 0.55rem; letter-spacing: 0.2em; }
+    .brand-logo { width: 40px; height: 40px; }
+
     .hero-meta { gap: 1.4rem; }
     .slot { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
     .slot .time { min-width: auto; }
@@ -505,6 +572,9 @@ footer p { font-size: 0.88rem; }
                 <span class="brand-sub">TISB Robotics Fest</span>
             </span>
         </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
         <ul>
             <li><a class="nav-link active" data-go="home">Home</a></li>
             <li><a class="nav-link" data-go="about">About</a></li>
@@ -702,12 +772,28 @@ footer p { font-size: 0.88rem; }
 <script>
 const links = document.querySelectorAll('[data-go]');
 const pages = document.querySelectorAll('.page');
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.querySelector('nav ul');
+
+function closeMenu() {
+    navMenu.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+}
+
 function go(id) {
     pages.forEach(p => p.classList.toggle('active', p.id === id));
     document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.go === id));
+    closeMenu();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 links.forEach(l => l.addEventListener('click', e => { e.preventDefault(); go(l.dataset.go); }));
+
+navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
 </script>
 </body>
 </html>
